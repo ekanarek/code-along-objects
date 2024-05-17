@@ -9,7 +9,7 @@ function personName() {
     age: 29,
     location: 'Orem, UT',
   };
-  return; // Code here
+  return person.firstName; // Code here
 }
 
 /// ////////////// PROBLEM 2 ////////////////////
@@ -23,7 +23,7 @@ function personLocation() {
     age: 29,
     location: 'Orem, UT',
   };
-  return; // Code Here
+  return person['location']; // Code Here
 }
 
 /// ////////////// PROBLEM 3 ////////////////////
@@ -32,7 +32,7 @@ function personLocation() {
 
 const backpack = {};
 
-// Code Here
+backpack.frontPocket = "compass";
 
 /// ////////////// PROBLEM 4 ////////////////////
 
@@ -42,7 +42,7 @@ const person = {};
 
 person['firstName'] = 'sally';
 
-// Code Here
+const userFirstName = person.firstName
 
 /// ////////////// PROBLEM 5 ////////////////////
 
@@ -57,7 +57,10 @@ person['firstName'] = 'sally';
 // };
 
 function updateUser(user) {
-  // Code Here
+  user.name = "Ryan";
+  user.pwHash = "superSafe"
+  user.username = "ryan2020";
+  return user;
 }
 
 /// ////////////// PROBLEM 6 ////////////////////
@@ -74,7 +77,7 @@ function updateUser(user) {
 // So updateProfile(userProfile, 'email', 'blah@yahoo.com') would update the email to 'blah@yahoo.com'
 
 function updateProfile(profile, property, value) {
-  // Code here
+  profile[property] = value;
   return profile;
 }
 
@@ -85,8 +88,9 @@ function updateProfile(profile, property, value) {
 // Return the updated object.
 
 function maxedOut(obj) {
-  // REPLACE THIS WITH YOUR CODE
-
+  for (const key in obj) {
+    obj[key] = "max";
+  }
   return obj;
 }
 
@@ -103,7 +107,11 @@ const state = {
 // Loop through the given object. If a value is greater than 3,000,000 set it to 0.
 
 function stateLooper(obj) {
-  // REPLACE THIS WITH YOUR CODE
+  for (const key in obj) {
+    if (obj[key] > 3000000) {
+      obj[key] = 0;
+    }
+  }
   return obj;
 }
 
@@ -114,8 +122,11 @@ function stateLooper(obj) {
 // Once all falsy values and their properties are removed, return the object
 
 function cleanUser(obj) {
-  // REPLACE THIS WITH YOUR CODE
-
+  for (const key in obj) {
+    if (!obj[key]) {
+      delete obj[key];
+    }
+  }
   return obj;
 }
 
@@ -125,7 +136,8 @@ function cleanUser(obj) {
 // Return an array containing all the object's values.
 
 function getValues(obj) {
-  // REPLACE THIS WITH YOUR CODE
+  const array = Object.values(obj);
+  return array;
 }
 
 /// ////////////// PROBLEM 11 ////////////////////
@@ -134,7 +146,8 @@ function getValues(obj) {
 // Then, add the string "copy" to the end of the copy and return the copy.
 
 function copyArray(arr) {
-  // REPLACE THIS WITH YOUR CODE
+  const copy = [...arr, "copy"]
+  return copy;
 }
 
 /// ////////////// PROBLEM 12 ////////////////////
@@ -143,7 +156,8 @@ function copyArray(arr) {
 // Then, add a new key-value pair {copy: true} to the end of the copy and return the copy.
 
 function copyObject(obj) {
-  // REPLACE THIS WITH YOUR CODE
+  const copy = {...obj, copy: true};
+  return copy;
 }
 
 /// ////////////// PROBLEM 13 ////////////////////
@@ -159,7 +173,7 @@ const animalCount = {
 // Use object destructuring syntax to create variables for each of the properties of the
 // animalCount object.
 
-// REPLACE THIS WITH YOUR CODE
+const { cats, dogs, mice } = animalCount;
 
 /// ////////////// PROBLEM 14 ////////////////////
 
@@ -167,7 +181,12 @@ const animalCount = {
 // In the function, use array destructuring to create variables for each of the numbers.
 // Then return the sum of the two numbers.
 
-// REPLACE THIS WITH YOUR CODE
+function addition(arr) {
+  const [num1, num2] = arr;
+  return num1 + num2;
+}
+
+
 
 /// ////////////// PROBLEM 15 ////////////////////
 
@@ -176,7 +195,10 @@ const animalCount = {
 // The values of these properties will be a number representing the count of that animal in the zoo
 // Using object destructuring, return the total sum of the counts of these animals
 
-// REPLACE THIS WITH YOUR CODE
+function zooAnimals(obj) {
+  const { lion, tiger, bear } = obj;
+  return lion + tiger + bear;
+}
 
 /// ////////////// PROBLEM 16 ////////////////////
 
@@ -205,4 +227,6 @@ const animalCount = {
 // Title and name in this sentence should be replaced with the values of the
 // destructured object variables.
 
-// REPLACE THIS WITH YOUR CODE
+function greeting({name, title}) {
+  return `Hello, ${title} ${name}!`;
+}
